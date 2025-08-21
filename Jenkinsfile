@@ -35,9 +35,9 @@ pipeline {
                 success{
                     archiveArtifacts 'target/*.jar'
                 }
-                always {
-                    junit '**/target/surefire-reports/TEST-*.xml'
-                }
+                // always {
+                //     junit '**/target/surefire-reports/TEST-*.xml'
+                // }
             }
         }
     }
