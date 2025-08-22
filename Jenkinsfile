@@ -122,6 +122,13 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy to Nexus') {
+            steps {
+                echo "Deploying WAR to Nexus..."
+                bat 'mvn deploy -DskipTests'
+            }
+        }
     }
 
     post {

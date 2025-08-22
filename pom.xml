@@ -55,7 +55,12 @@
   
   <!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-core -->
 
-  
+    <distributionManagement>
+      <repository>
+          <id>nexus</id>
+          <url>http://localhost:8081/repository/maven-snapshots/</url>
+      </repository>
+  </distributionManagement>
   
   
   
