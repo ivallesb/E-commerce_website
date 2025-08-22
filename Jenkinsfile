@@ -127,8 +127,10 @@ pipeline {
             steps {
                 echo "Deploying WAR to Nexus..."
                 withCredentials([usernamePassword(credentialsId: 'nexus_user', usernameVariable: 'NEXUS_USER', passwordVariable: 'NEXUS_PASS')]) {
-                     bat 'mvn deploy -X -DskipTests -Dnexus.username=%NEXUS_USER% -Dnexus.password=%NEXUS_PASS%'
-                 }
+                    configFileProvider([configFile(fileId: 'maven_settings', variable: 'MAVEN_SETTINGS')]) {
+                        bat 'mvn deploy -s %MAVEN_SETTINGS% -DskipTests'
+                    }
+                }
             }
         }
     }
