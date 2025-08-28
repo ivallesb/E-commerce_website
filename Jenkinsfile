@@ -31,7 +31,7 @@ pipeline {
             }
         }
 
-        stage('Code Quality') {
+        // stage('Code Quality') {
             // parallel {
                 stage('Compile') {
                     steps {
@@ -54,7 +54,7 @@ pipeline {
                 //     }
                 // }
             // }
-        }
+        // }
 
         stage('Test') {
             steps {
