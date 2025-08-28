@@ -2,15 +2,16 @@ package com.learn.mycart.servlets;
 
 import java.io.IOException;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import com.learn.mycart.dao.UserDao;
 import com.learn.mycart.entities.User;
 import com.learn.mycart.helper.FactoryProvider;
+import com.learn.mycart.helper.MetricsHelper;
 
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,12 +32,16 @@ public class LoginServlet extends HttpServlet {
         HttpSession httpSession=request.getSession();
         if(user==null)
         {
+
         	
 			httpSession.setAttribute("message","*Invalid Details !! Try with another one*");
 			response.sendRedirect("login.jsp");
 			return;
         }
         else {
+
+        	// Increment login metrics for successful login
+        	MetricsHelper.incrementUserLogins();
         	
         	httpSession.setAttribute("current-user",user);
         	

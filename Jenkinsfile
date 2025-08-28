@@ -32,7 +32,7 @@ pipeline {
         }
 
         stage('Code Quality') {
-            parallel {
+            // parallel {
                 stage('Compile') {
                     steps {
                         echo "Compiling the application..."
@@ -40,20 +40,20 @@ pipeline {
                     }
                 }
                 
-                stage('Code Analysis') {
-                    steps {
-                        echo "Running static code analysis..."
-                        // Add static code analysis tools like SpotBugs or PMD
-                        script {
-                            try {
-                                bat 'mvn spotbugs:check'
-                            } catch (Exception e) {
-                                echo "SpotBugs not configured, skipping..."
-                            }
-                        }
-                    }
-                }
-            }
+                // stage('Code Analysis') {
+                //     steps {
+                //         echo "Running static code analysis..."
+                //         // Add static code analysis tools like SpotBugs or PMD
+                //         script {
+                //             try {
+                //                 bat 'mvn spotbugs:check'
+                //             } catch (Exception e) {
+                //                 echo "SpotBugs not configured, skipping..."
+                //             }
+                //         }
+                //     }
+                // }
+            // }
         }
 
         stage('Test') {

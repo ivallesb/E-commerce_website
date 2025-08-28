@@ -5,13 +5,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.Part;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.Part;
 
 import com.learn.mycart.dao.CategoryDao;
 import com.learn.mycart.dao.ProductDao;
@@ -85,7 +85,10 @@ public class ProductOperationServlet extends HttpServlet {
 			//find out the path to uploaad photo
 			
 			try {
-				String path=request.getRealPath("img")+File.separator+"products"+File.separator+part.getSubmittedFileName();
+
+				String realPath = request.getServletContext().getRealPath("/img/products");
+				String path = realPath + File.separator + part.getSubmittedFileName();
+
 				
 				FileOutputStream fos= new FileOutputStream(path);
 				
