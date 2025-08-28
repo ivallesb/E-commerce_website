@@ -29,7 +29,7 @@ pipeline {
                 git branch: 'feature/jenkins', url: 'https://github.com/ivallesb/E-commerce_website.git'
                 
             }
-        }
+        } 
 
         // stage('Code Quality') {
             // parallel {
